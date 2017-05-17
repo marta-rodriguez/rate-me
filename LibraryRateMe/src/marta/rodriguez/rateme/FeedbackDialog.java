@@ -1,4 +1,4 @@
-package com.androidsx.rateme;
+package marta.rodriguez.rateme;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,7 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.androidsx.libraryrateme.R;
+import marta.rodriguez.libraryrateme.R;
+
 
 /**
  * Dialog to ask the user for feedback after a low rating.

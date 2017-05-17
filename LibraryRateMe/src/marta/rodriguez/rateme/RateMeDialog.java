@@ -1,4 +1,4 @@
-package com.androidsx.rateme;
+package marta.rodriguez.rateme;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,10 +17,11 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.androidsx.libraryrateme.R;
+import marta.rodriguez.libraryrateme.R;
+
 
 /**
- * Rate Me dialog. Entry point into the library. Use the {@link com.androidsx.rateme.RateMeDialog.Builder} to
+ * Rate Me dialog. Entry point into the library. Use the {@link RateMeDialog.Builder} to
  * construct your instance.
  */
 public class RateMeDialog extends DialogFragment {
@@ -446,7 +447,7 @@ public class RateMeDialog extends DialogFragment {
         }
 
         /**
-        * @see com.androidsx.rateme.OnRatingListener
+        * @see OnRatingListener
         */
         public Builder setOnRatingListener(OnRatingListener onRatingListener) {
             this.onRatingListener = onRatingListener;

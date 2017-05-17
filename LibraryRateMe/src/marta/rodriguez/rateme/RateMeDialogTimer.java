@@ -1,12 +1,12 @@
-package com.androidsx.rateme;
-
-import java.util.Date;
+package marta.rodriguez.rateme;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.util.Date;
 
 /**
  * Timer to schedule the rate-me after a number of application launches.
