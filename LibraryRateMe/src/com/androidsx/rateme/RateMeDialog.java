@@ -316,11 +316,7 @@ public class RateMeDialog extends DialogFragment {
     private Intent shareApp(String appPackageName) {
         Intent shareApp = new Intent();
         shareApp.setAction(Intent.ACTION_SEND);
-        try {
-            shareApp.putExtra(Intent.EXTRA_TEXT, MARKET_CONSTANT + appPackageName);
-        } catch (android.content.ActivityNotFoundException anfe) {
-            shareApp.putExtra(Intent.EXTRA_TEXT, GOOGLE_PLAY_CONSTANT + appPackageName);
-        }
+        shareApp.putExtra(Intent.EXTRA_TEXT, GOOGLE_PLAY_CONSTANT + appPackageName);
         shareApp.setType("text/plain");
         return shareApp;
     }
