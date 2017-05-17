@@ -1,4 +1,4 @@
-package marta.rodriguez.rateme;
+package com.github.martarodriguezm.rateme;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package marta.rodriguez.rateme;
+package com.github.martarodriguezm.rateme;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import marta.rodriguez.libraryrateme.R;
+import com.github.martarodriguezm.libraryrateme.R;
 
 
 /**

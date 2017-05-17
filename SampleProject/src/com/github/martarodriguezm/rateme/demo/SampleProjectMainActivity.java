@@ -1,4 +1,4 @@
-package marta.rodriguez.rateme.demo1;
+package com.github.martarodriguezm.rateme.demo;
 
 import android.os.Bundle;
 import android.os.Parcel;
@@ -8,10 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import marta.rodriguez.rateme.OnRatingListener;
-import marta.rodriguez.rateme.RateMeDialog;
-import marta.rodriguez.rateme.RateMeDialogTimer;
-import marta.rodriguez.rateme.demo.R;
+import com.github.martarodriguezm.rateme.OnRatingListener;
+import com.github.martarodriguezm.rateme.RateMeDialog;
+import com.github.martarodriguezm.rateme.RateMeDialogTimer;
+
+
 
 public class SampleProjectMainActivity extends ActionBarActivity {
 
