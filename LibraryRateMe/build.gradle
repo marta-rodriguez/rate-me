@@ -4,7 +4,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'rate-me'
 
-    publishedGroupId = 'com.github.martarodriguezm.rateme'
+    publishedGroupId = 'com.github.martarodriguezm'
     libraryName = 'RateMe'
     artifact = 'rate-me'
 
@@ -56,8 +56,6 @@ android {
         abortOnError true
     }
 }
-// Used to push in maven
-apply from: '../maven_push.gradle'
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
