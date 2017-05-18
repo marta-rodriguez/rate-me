@@ -1,19 +1,21 @@
 Rate-Me [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Rate--Me-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1032)
 =======
 
+Based on [androidsx rate-me library](https://github.com/androidsx/rate-me)
+
 Rate Me is an Android library that shows dialog to suggest the user to rate the application in the Google Play Store.
 
 With a little twist: if the rating is positive, we take the user to the Play Store directly. Otherwise, we ask him for feedback via email. (This is all configurable.)
 
 <p>
-<img src="https://raw.githubusercontent.com/androidsx/rate-me/master/readme-images/rate-me-dialog-in-helium.png" width="256" />
-<img src="https://raw.githubusercontent.com/androidsx/rate-me/master/readme-images/rate-me-dialog-in-pixable.png" width="256" />
+<img src="https://raw.githubusercontent.com/martarodriguezm/rate-me/master/readme-images/rate-me-dialog-in-helium.png" width="256" />
+<img src="https://raw.githubusercontent.com/martarodriguezm/rate-me/master/readme-images/rate-me-dialog-in-pixable.png" width="256" />
 </p>
 
-How to integrate
+Add it to your project
 ================
 
-Add this dependency in your `build.gradle`:
+Include the library in your `build.gradle`:
 
 ```xml
 dependencies {
@@ -21,7 +23,16 @@ dependencies {
 }
 ```
 
-Find the latest version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.androidsx%22%20AND%20a%3A%22rate-me%22).
+or to your pom.xml if you are using Maven
+
+```
+<dependency>
+  <groupId>com.github.martarodriguezm</groupId>
+  <artifactId>rate-me</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 How to use
 ==========
@@ -48,6 +59,14 @@ if (RateMeDialogTimer.shouldShowRateDialog(this, 7, 3)) {
 	// show the dialog with the code above
 }
 ```
+
+Do you want to contribute?
+==========================
+
+Feel free to report us or add any useful feature to the library, I will be glad to improve it with your help.
+
+Just fork the repository and then send a pull request with the changes.
+
 
 License
 =======
