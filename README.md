@@ -1,4 +1,4 @@
-Rate-Me [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Rate--Me-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1032)
+Rate-Me [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.martarodriguezm/rate-me/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.martarodriguezm/rate-me)
 =======
 
 Based on [androidsx rate-me library](https://github.com/androidsx/rate-me)
