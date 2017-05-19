@@ -17,9 +17,6 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.github.martarodriguezm.libraryrateme.R;
-
-
 /**
  * Rate Me dialog. Entry point into the library. Use the {@link RateMeDialog.Builder} to
  * construct your instance.

@@ -21,8 +21,8 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 25
-        versionName project.VERSION_NAME
-        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName "1.0"
+        versionCode 1
     }
 
     sourceSets {
@@ -44,6 +44,6 @@ android {
 }
 
 dependencies {
-    compile project(':LibraryRateMe')
+    compile project(':rate-me')
     compile 'com.android.support:appcompat-v7:25.3.1'
 }

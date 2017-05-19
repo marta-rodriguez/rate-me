@@ -1,2 +1,2 @@
-include ':LibraryRateMe'
+include ':rate-me'
 include ':SampleProject'

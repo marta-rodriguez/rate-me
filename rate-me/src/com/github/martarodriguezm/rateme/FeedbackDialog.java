@@ -13,9 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.martarodriguezm.libraryrateme.R;
-
-
 /**
  * Dialog to ask the user for feedback after a low rating.
  */
