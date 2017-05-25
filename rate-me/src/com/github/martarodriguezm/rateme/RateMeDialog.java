@@ -142,10 +142,12 @@ public class RateMeDialog extends DialogFragment {
                 @Override
                 public void onClick(View v) {
                     dismiss();
-                    RateMeDialogTimer.clearSharedPreferences(getActivity());
-                    Log.d(TAG, "Clear the shared preferences");
-                    RateMeDialogTimer.setOptOut(getActivity(), true);
-                    onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_CROSS, ratingBar.getRating());
+                    if(getActivity() != null) {
+                        RateMeDialogTimer.clearSharedPreferences(getActivity());
+                        Log.d(TAG, "Clear the shared preferences");
+                        RateMeDialogTimer.setOptOut(getActivity(), true);
+                        if (onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_CROSS, ratingBar.getRating());
+                    }
                 }
             });
         } catch (Exception e) {
@@ -160,7 +162,7 @@ public class RateMeDialog extends DialogFragment {
                 public void onClick(View v) {
                     startActivity(shareApp(appPackageName));
                     Log.d(TAG, "Share the application");
-                    onRatingListener.onRating(OnRatingListener.RatingAction.SHARED_APP, ratingBar.getRating());
+                    if(onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.SHARED_APP, ratingBar.getRating());
 
                 }
             });
@@ -270,7 +272,7 @@ public class RateMeDialog extends DialogFragment {
                 rateApp();
                 Log.d(TAG, "Yes: open the Google Play Store");
                 RateMeDialogTimer.setOptOut(getActivity(), true);
-                onRatingListener.onRating(OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY, ratingBar.getRating());
+                if(onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY, ratingBar.getRating());
                 dismiss();
             }
         });
@@ -296,7 +298,7 @@ public class RateMeDialog extends DialogFragment {
                     Log.d(TAG, "No: open the feedback dialog");
                 } else {
                     dismiss();
-                    onRatingListener.onRating(OnRatingListener.RatingAction.LOW_RATING, ratingBar.getRating());
+                    if(onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.LOW_RATING, ratingBar.getRating());
                 }
                 RateMeDialogTimer.setOptOut(getActivity(), true);
             }
