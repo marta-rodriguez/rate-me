@@ -2,7 +2,7 @@ package com.github.martarodriguezm.rateme.demo;
 
 import android.os.Bundle;
 import android.os.Parcel;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +14,7 @@ import com.github.martarodriguezm.rateme.RateMeDialogTimer;
 
 
 
-public class SampleProjectMainActivity extends ActionBarActivity {
+public class SampleProjectMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
