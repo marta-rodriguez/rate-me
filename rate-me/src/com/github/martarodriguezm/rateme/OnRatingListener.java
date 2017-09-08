@@ -37,6 +37,11 @@ public interface OnRatingListener extends Parcelable {
          */
         DISMISSED_WITH_CROSS,
 
+        /**
+         * Dismissed the dialog with back button or clicking outside dialog.
+         */
+        DISMISSED_WITH_BACK_OR_CLICK,
+
         /** Shared the link to the app through the button in the top-right corner. */
         SHARED_APP
     }

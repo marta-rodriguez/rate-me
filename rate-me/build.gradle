@@ -57,5 +57,9 @@ android {
     }
 }
 
+dependencies {
+    compile "com.android.support:support-core-utils:${SUPPORT_LIB_VERSION}"
+}
+
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

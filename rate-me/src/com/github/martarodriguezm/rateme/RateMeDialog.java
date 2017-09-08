@@ -3,6 +3,7 @@ package com.github.martarodriguezm.rateme;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
@@ -10,6 +11,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -62,6 +64,8 @@ public class RateMeDialog extends DialogFragment {
     private boolean showOKButtonByDefault;
     private OnRatingListener onRatingListener;
 
+    private boolean actionListenerSent;
+
     public RateMeDialog() {
         // Empty constructor, required for pause/resume
     }
@@ -110,6 +114,7 @@ public class RateMeDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         initializeUiFields();
         Log.d(TAG, "All components were initialized successfully");
+        this.actionListenerSent = false;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -146,7 +151,10 @@ public class RateMeDialog extends DialogFragment {
                         RateMeDialogTimer.clearSharedPreferences(getActivity());
                         Log.d(TAG, "Clear the shared preferences");
                         RateMeDialogTimer.setOptOut(getActivity(), true);
-                        if (onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_CROSS, ratingBar.getRating());
+                        if (onRatingListener != null) {
+                            actionListenerSent = true;
+                            onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_CROSS, ratingBar.getRating());
+                        }
                     }
                 }
             });
@@ -162,7 +170,10 @@ public class RateMeDialog extends DialogFragment {
                 public void onClick(View v) {
                     startActivity(shareApp(appPackageName));
                     Log.d(TAG, "Share the application");
-                    if(onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.SHARED_APP, ratingBar.getRating());
+                    if(onRatingListener != null) {
+                        actionListenerSent = true;
+                        onRatingListener.onRating(OnRatingListener.RatingAction.SHARED_APP, ratingBar.getRating());
+                    }
 
                 }
             });
@@ -225,7 +236,7 @@ public class RateMeDialog extends DialogFragment {
         outState.putBoolean("showOKButtonByDefault", showOKButtonByDefault);
         outState.putParcelable("onRatingListener", onRatingListener);
     }
-    
+
     @Override
     public void onStart() {
         super.onStart();
@@ -233,6 +244,15 @@ public class RateMeDialog extends DialogFragment {
         final View titleDivider = getDialog().findViewById(titleDividerId);
         if (titleDivider != null) {
             titleDivider.setBackgroundColor(lineDividerColor);
+        }
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if(onRatingListener != null && !actionListenerSent) {
+            Log.d(TAG, "Dismiss dialog");
+            onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_BACK_OR_CLICK, ratingBar.getRating());
         }
     }
 
@@ -272,7 +292,10 @@ public class RateMeDialog extends DialogFragment {
                 rateApp();
                 Log.d(TAG, "Yes: open the Google Play Store");
                 RateMeDialogTimer.setOptOut(getActivity(), true);
-                if(onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY, ratingBar.getRating());
+                if(onRatingListener != null) {
+                    actionListenerSent = true;
+                    onRatingListener.onRating(OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY, ratingBar.getRating());
+                }
                 dismiss();
             }
         });
@@ -281,6 +304,7 @@ public class RateMeDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (feedbackByEmailEnabled) {
+                    actionListenerSent = true;
                     DialogFragment dialogMail = FeedbackDialog.newInstance(feedbackEmail,
                             appName,
                             headerBackgroundColor,
@@ -298,7 +322,10 @@ public class RateMeDialog extends DialogFragment {
                     Log.d(TAG, "No: open the feedback dialog");
                 } else {
                     dismiss();
-                    if(onRatingListener != null) onRatingListener.onRating(OnRatingListener.RatingAction.LOW_RATING, ratingBar.getRating());
+                    if(onRatingListener != null) {
+                        actionListenerSent = true;
+                        onRatingListener.onRating(OnRatingListener.RatingAction.LOW_RATING, ratingBar.getRating());
+                    }
                 }
                 RateMeDialogTimer.setOptOut(getActivity(), true);
             }
@@ -322,9 +349,9 @@ public class RateMeDialog extends DialogFragment {
     }
 
     private void setIconsTitleColor(int colorClose, int colorShare) {
-        getResources().getDrawable(android.R.drawable.ic_menu_close_clear_cancel)
+        ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_menu_close_clear_cancel)
                 .setColorFilter(new LightingColorFilter(colorClose, colorClose));
-        getResources().getDrawable(android.R.drawable.ic_menu_share)
+        ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_menu_share)
                 .setColorFilter(new LightingColorFilter(colorShare, colorShare));
     }
 

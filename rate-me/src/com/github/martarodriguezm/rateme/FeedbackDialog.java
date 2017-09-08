@@ -3,6 +3,7 @@ package com.github.martarodriguezm.rateme;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -39,6 +40,8 @@ public class FeedbackDialog extends DialogFragment {
     private Button yes;
 
     private OnRatingListener onActionListener;
+
+    private boolean actionListenerSent;
     
     public static FeedbackDialog newInstance(String email,
                                              String appName,
@@ -81,11 +84,15 @@ public class FeedbackDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         initializeUiFieldsDialogGoToMail();
         Log.d(TAG, "All components were initialized successfully");
-        
+        this.actionListenerSent = false;
+
         cancel.setOnClickListener(new View.OnClickListener()  {
             public void onClick(View v) {
                 dismiss();
-                onActionListener.onRating(OnRatingListener.RatingAction.LOW_RATING_REFUSED_TO_GIVE_FEEDBACK, getArguments().getFloat(EXTRA_RATING_BAR));
+                if (onActionListener != null) {
+                    actionListenerSent = true;
+                    onActionListener.onRating(OnRatingListener.RatingAction.LOW_RATING_REFUSED_TO_GIVE_FEEDBACK, getArguments().getFloat(EXTRA_RATING_BAR));
+                }
                 Log.d(TAG, "Canceled the feedback dialog");
             }
         });  
@@ -94,7 +101,10 @@ public class FeedbackDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 goToMail(getArguments().getString(EXTRA_APP_NAME));
-                onActionListener.onRating(OnRatingListener.RatingAction.LOW_RATING_GAVE_FEEDBACK, getArguments().getFloat(EXTRA_RATING_BAR));
+                if (onActionListener != null) {
+                    actionListenerSent = true;
+                    onActionListener.onRating(OnRatingListener.RatingAction.LOW_RATING_GAVE_FEEDBACK, getArguments().getFloat(EXTRA_RATING_BAR));
+                }
                 Log.d(TAG, "Agreed to provide feedback");
                 dismiss();
             }
@@ -137,6 +147,15 @@ public class FeedbackDialog extends DialogFragment {
         final View titleDivider = getDialog().findViewById(titleDividerId);
         if (titleDivider != null) {
             titleDivider.setBackgroundColor(getArguments().getInt(EXTRA_TITLE_DIVIDER));
+        }
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if(onActionListener != null && !actionListenerSent) {
+            Log.d(TAG, "Dismiss dialog");
+            onActionListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_BACK_OR_CLICK, getArguments().getFloat(EXTRA_RATING_BAR));
         }
     }
 
