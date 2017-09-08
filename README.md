@@ -19,7 +19,7 @@ Include the library in your `build.gradle`:
 
 ```xml
 dependencies {
-    compile 'com.github.martarodriguezm:rate-me:1.0.1'
+    compile 'com.github.martarodriguezm:rate-me:1.1'
 }
 ```
 
@@ -29,7 +29,7 @@ or to your pom.xml if you are using Maven
 <dependency>
   <groupId>com.github.martarodriguezm</groupId>
   <artifactId>rate-me</artifactId>
-  <version>1.0.1</version>
+  <version>1.1</version>
   <type>pom</type>
 </dependency>
 ```

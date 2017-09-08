@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/martarodriguezm/rate-me'
     gitUrl = 'https://github.com/martarodriguezm/rate-me.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.1'
 
     developerId = 'marta-rodriguez'
     developerName = 'Marta Rodriguez'
