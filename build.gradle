@@ -34,7 +34,7 @@ ext {
     minSdkVersion = 17
     targetSdkVersion = 26
 
-    SUPPORT_LIB_VERSION = '26.0.2'
+    SUPPORT_LIB_VERSION = '26.1.0'
 }
 
 apply plugin: 'android-reporting'
