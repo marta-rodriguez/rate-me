@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/martarodriguezm/rate-me'
     gitUrl = 'https://github.com/martarodriguezm/rate-me.git'
 
-    libraryVersion = '1.1.2'
+    libraryVersion = '1.2'
 
     developerId = 'marta-rodriguez'
     developerName = 'Marta Rodriguez'
@@ -30,7 +30,6 @@ repositories {
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
     resourcePrefix "rateme__"
 
     defaultConfig {
@@ -58,7 +57,7 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:support-core-utils:${SUPPORT_LIB_VERSION}"
+    implementation "com.android.support:support-core-utils:${SUPPORT_LIB_VERSION}"
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'

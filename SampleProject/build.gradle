@@ -7,7 +7,7 @@ buildscript{
         google()
 	}
 	dependencies{
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
 	}
 }
 
@@ -17,7 +17,6 @@ repositories {
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
@@ -45,6 +44,6 @@ android {
 }
 
 dependencies {
-    compile project(':rate-me')
-    compile "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
+    implementation project(':rate-me')
+    implementation "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
 }
