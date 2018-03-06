@@ -19,7 +19,7 @@ Include the library in your `build.gradle`:
 
 ```xml
 dependencies {
-    compile 'com.github.martarodriguezm:rate-me:1.2'
+    compile 'com.github.martarodriguezm:rate-me:1.3'
 }
 ```
 

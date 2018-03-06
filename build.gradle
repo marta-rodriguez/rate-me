@@ -30,12 +30,12 @@ allprojects {
 
 
 ext {
-    compileSdkVersion = 26
+    compileSdkVersion = 27
 
     minSdkVersion = 17
-    targetSdkVersion = 26
+    targetSdkVersion = 27
 
-    SUPPORT_LIB_VERSION = '27.0.1'
+    SUPPORT_LIB_VERSION = '27.1.0'
 }
 
 apply plugin: 'android-reporting'
