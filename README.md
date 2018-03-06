@@ -29,7 +29,7 @@ or to your pom.xml if you are using Maven
 <dependency>
   <groupId>com.github.martarodriguezm</groupId>
   <artifactId>rate-me</artifactId>
-  <version>1.1</version>
+  <version>1.3</version>
   <type>pom</type>
 </dependency>
 ```
