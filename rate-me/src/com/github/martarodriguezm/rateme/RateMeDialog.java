@@ -150,7 +150,7 @@ public class RateMeDialog extends DialogFragment {
                     if(getActivity() != null) {
                         RateMeDialogTimer.clearSharedPreferences(getActivity());
                         Log.d(TAG, "Clear the shared preferences");
-                        RateMeDialogTimer.setOptOut(getActivity(), true);
+                        //RateMeDialogTimer.setOptOut(getActivity(), true);
                         if (onRatingListener != null) {
                             actionListenerSent = true;
                             onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_CROSS, ratingBar.getRating());
